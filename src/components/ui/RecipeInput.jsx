@@ -3,7 +3,7 @@ import { Box, Input } from "@chakra-ui/react";
 
 export const RecipeInput = ({ value, onChange }) => {
   return (
-    <Box width="100%">
+   
       <Input
         type="text"
         placeholder="Search for recipe"
@@ -13,7 +13,7 @@ export const RecipeInput = ({ value, onChange }) => {
         width="100%"
         bg={"whiteAlpha.900"}
       />
-    </Box>
+    
   );
 };
 
