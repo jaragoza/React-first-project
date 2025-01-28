@@ -1,4 +1,4 @@
-import { Heading, Box, Center, VStack, Grid } from "@chakra-ui/react";
+import { Heading, Box, Center, VStack, Grid, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { data } from "../utils/data";
 import RecipeSearch from "../components/RecipeSearch";
@@ -31,20 +31,26 @@ export const RecipeListPage = ({ onSelectRecipe }) => {
       </Center>
 
       <Center mt={10}>
-        <Grid
-          templateColumns="repeat(auto-fit, minmax(300px, 1fr))"
-          gap={8}
-          maxWidth="1400px"
-          width="100%"
-        >
-          {filteredRecipes.map((hit) => (
-            <RecipeList
-              key={hit.recipe.label}
-              recipe={hit.recipe}
-              onClick={() => onSelectRecipe(hit.recipe)}
-            />
-          ))}
-        </Grid>
+        {filteredRecipes.length > 0 ? (
+          <Grid
+            templateColumns="repeat(auto-fit, minmax(300px, 1fr))"
+            gap={8}
+            maxWidth="1400px"
+            width="100%"
+          >
+            {filteredRecipes.map((hit) => (
+              <RecipeList
+                key={hit.recipe.label}
+                recipe={hit.recipe}
+                onClick={() => onSelectRecipe(hit.recipe)}
+              />
+            ))}
+          </Grid>
+        ) : (
+          <Text fontSize="2xl" color="white">
+            No recipes found.
+          </Text>
+        )}
       </Center>
     </Box>
   );
